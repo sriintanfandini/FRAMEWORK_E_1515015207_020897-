@@ -14,11 +14,13 @@
             body {
                 padding-top: 70px;
                 padding-bottom: 70px;
+                background: pink;
            }
 
            .starter-template{
             padding: 40px 15px;
             text-align: center;
+
            }
 
            .form-horizontal{
@@ -28,6 +30,7 @@
            footer{
             padding-top: 15px;
             text-align: right;
+            background: black;
            }
 
 
@@ -48,14 +51,18 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
+                    
+
                     <li class="dropdown active">
-                        <a href="#" data-togle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Mahasiswa <span class="caret"></span></a>
-                            <ul class="dropdown-menu" aria-labelledby="dLabel">
-                                <li><a href="{{url('Mahasiswa')}}">Data Mahasiswa</a></li>
+                        <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Mahasiswa <span class="caret"></span>
+                        </a>
+                         <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                <li><a href="{{url('mahasiswa')}}">Data Mahasiswa</a></li>
                                 <li class="divider"></li>
                                 <li><a href="{{url('jadwal_matakuliah')}}">Jadwal Mahasiswa</a></li>
                             </ul>
                     </li>
+
                     <li class="dropdown active">
                         <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Dosen <span class="caret"></span>
                         </a>
@@ -93,9 +100,11 @@
        <nav class="navbar navbar-default navbar-fixed-bottom">
            <footer class="container">
                <!   please dont delete this >
-               created by <a href="http://google.com/kara">
-               <span><i class="fa fa-google" style="color: #1da1f2"></i>@kara</span></a> <!--/   please dont delete this    -->
-           </footer>
+               <marquee>
+
+               <font face="arial black" size="5" color="gold">created by</font> <a href="http://google.com/kara">
+               <span><i class="fa fa-google" style="color: #1da1f2"></i><font face="arial black" size="5" color="gold"><b>@Sri Intan Fandini</b></font></span></a> <!--/   please dont delete this    -->
+           </marquee></footer>
        </nav>
 
        <script type="text/javascript" src="{{ asset('component/jquery/dist/jquery.min.js') }}"></script>

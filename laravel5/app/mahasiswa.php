@@ -32,4 +32,5 @@ class mahasiswa extends Model
     {
         return $this->hasMany(Jadwal_Matakuliah::class);
     }
+    
 }

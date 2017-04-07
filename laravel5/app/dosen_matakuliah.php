@@ -10,9 +10,9 @@ class dosen_matakuliah extends Model
     protected $fillable = ['dosen_id','matakuliah_id'];
     // protected $guarded = ['id'];
 
-    public function Dosen()
+    public function dosen()
     {
-        return $this->belongsTo(Dosen::class);
+        return $this->belongsTo(dosen::class);
     }
 
     public function Matakuliah()
@@ -20,9 +20,9 @@ class dosen_matakuliah extends Model
         return $this->belongsTo(Matakuliah::class);
     }
 
-       public function Jadwal_Matakuliah()
+       public function jadwal_matakuliah()
     {
-        return $this->hasMany(Jadwal_Matakuliah::class);
+        return $this->hasMany(jadwal_matakuliah::class);
     }
 
     public function getNamadosenAttribute(){
@@ -37,12 +37,13 @@ class dosen_matakuliah extends Model
         return $this->matakuliah->title;
     }
 
-    public function listDosenDanMatakuliah()
+    public function listdosenDanmatakuliah()
     {
         $out = [];
         foreach ($this->all() as $dsnMtk) {
-            $out[$dsnMtk->id] = "{$dsnMtk->dosen->nama} {$dsnMtk->dosen->nip} (Matakuliah {$dsnMtk->matakuliah->title})";
+            $out[$dsnMtk->id] = "{$dsnMtk->dosen->nama}(Matakuliah {$dsnMtk->matakuliah->title})";
         }
         return $out;
     }
+
 }

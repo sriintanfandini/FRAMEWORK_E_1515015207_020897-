@@ -38,7 +38,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Nama : Fietra Prabaskara <p>NIM : 1515015222</div>
+                <div class="title">Nama : Sri Intan Fandini Agus <p>NIM : 1515015207</div>
             </div>
         </div>
     </body>

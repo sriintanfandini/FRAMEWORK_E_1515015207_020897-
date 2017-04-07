@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class jadwal_matakuliah extends Model
 {
-     protected $table ='jadwa_matakuliah';
-    protected $fillable =['mahasiswa_id','ruangan_id','dosenmatakuliah_id'];
+     protected $table ='jadwal_matakuliah';
+    protected $fillable =['mahasiswa_id','ruangan_id','dosen_matakuliah_id'];
 
      public function mahasiswa(){
     	return $this->belongsTo(mahasiswa::class);
