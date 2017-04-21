@@ -7,7 +7,7 @@
 		</a>Tambah data jadwal mahasiswa</strong>
 	</div>
 		{!! Form::open(['url' => 'jadwal_matakuliah/simpan','class' => 'form-horizontal']) !!}
-        		@include('jadwal_matakuliah.form.form')
+        		@include('jadwal_matakuliah.form.form') ['submit_text' => 'Tambah Data'])
 	
 <!-- 
 {!! Form::open(['url'=>'mahasiswa/simpan','class'=>'form-horizontal']) !!}

@@ -3,7 +3,7 @@
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<strong>Seluruh Data jadwal mahasiwsa</strong>
-		<a href="{{url('jadwalmatakuliah/tambah') }}" class="btn btn-xs btn-primary pull-right">
+		<a href="{{url('jadwal_matakuliah/tambah') }}" class="btn btn-xs btn-primary pull-right">
 			<i class="fa fa-plus"></i>jadwal mahasiswa</a>
 			<div class="clearfix"></div>
 	</div>

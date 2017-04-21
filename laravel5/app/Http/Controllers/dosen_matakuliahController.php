@@ -9,13 +9,14 @@ use App\dosen_matakuliah;
 use App\dosen;
 use App\Matakuliah;
 use App\jadwal_matakuliah;
+use App\Http\Request\DosenMatakuliahRequest;
 
 class dosen_matakuliahController extends Controller
 {
     public function awal()
     {
-        $Semua_dosen_matakuliah = dosen_matakuliah::all();
-        return view('dosen_matakuliah.awal', compact('Semua_dosen_matakuliah'));
+        $Semua_Dosen_Matakuliah = dosen_matakuliah::all();
+        return view('dosen_matakuliah.awal', compact('Semua_Dosen_Matakuliah'));
     }
 
     public function tambah()
@@ -26,7 +27,7 @@ class dosen_matakuliahController extends Controller
         return $this->simpan();
     }
 
-    public function simpan(Request $input)
+    public function simpan(DosenMatakuliahRequest $input)
     {
         $dosen_matakuliah = new dosen_matakuliah($input->only('dosen_id','matakuliah_id'));
             if($dosen_matakuliah->save()) $this->informasi = "Matakuliah dan Dosen Mengajar berhasil disimpan";
@@ -42,7 +43,7 @@ class dosen_matakuliahController extends Controller
         $matakuliah = new Matakuliah;
         return view('dosen_matakuliah.edit',compact('dosen','matakuliah','dosen_matakuliah'));
     }
-    public function update($id,Request $input)
+    public function update($id,DosenMatakuliahRequest $input)
     {
         $dosen_matakuliah = dosen_matakuliah::find($id);
         $dosen_matakuliah->fill($input->only('dosen_id','matakuliah_id'));

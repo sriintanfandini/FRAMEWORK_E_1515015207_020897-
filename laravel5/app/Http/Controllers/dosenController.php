@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\dosen;
+use App\pengguna;
+use App\Http\Request\DosenRequest;
 
 class dosenController extends Controller
 {
@@ -16,13 +18,16 @@ class dosenController extends Controller
 public function tambah(){
     return view('dosen.tambah');
     }
-public function simpan(Request $input){
+public function simpan(DosenRequest $input){
+    if ($pengguna->save())
+    {
     $dosen = new dosen;
     $dosen->nama = $input->nama;
     $dosen->nip = $input->nip;
     $dosen->alamat = $input->alamat;
     $dosen->pengguna_id = $input->pengguna_id;
-    $informasi = $dosen->save() ? 'Berhasil simpan data' : 'Gagal simpan data';
+        if ($pengguna->dosen()->save($dosen)) $this->informasi = 'Berhasil Simpan Data';
+    }
     return redirect('dosen')->with(['informasi'=>$informasi]);
     }
 public function edit($id){
@@ -33,7 +38,7 @@ public function lihat($id){
     $dosen = dosen::find($id);
     return view('dosen.lihat')->with(array('dosen'=>$dosen));
 }
-public function update($id, Request $input){
+public function update($id, DosenRequest $input){
     $dosen = dosen::find($id);
     $dosen->nama = $input->nama;
     $dosen->nip = $input->nip;

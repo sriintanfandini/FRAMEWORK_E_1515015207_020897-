@@ -5,13 +5,13 @@
 	</div>
 </div>
 
-<!-- <div class="form-group">
-	<label class="col-sm-2 control-label" id="dosen_id"> Id Dosen</label>
+<div class="form-group">
+	<label class="col-sm-2 control-label" id="dosen_id"> id dosen</label>
 	<div class="col-sm-10">
-		{!! Form::select('dosen_id',$dosenmatakuliah->list('nama', 'id'),null,['class'=>'form-control','id'=> 'dosen_id','placeholder'=>"dosen"]) !!}		
+		{!! Form::select('dosen_id',$dosen_matakuliah->list('nama', 'id'),null,['class'=>'form-control','id'=> 'dosen_id','placeholder'=>"dosen"]) !!}		
 	</div>
 </div>
- -->
+
 <div class="form-group">
 	<label class="col-sm-2 control-label"> "ruangan_id">ruangan</label>
 	<div class="col-sm-10">

@@ -56,9 +56,9 @@ Route::get('dosen/hapus/{dosen}', 'dosenController@hapus');
 
 Route::get('mahasiswa','mahasiswacontroller@awal');
 Route::get('mahasiswa/tambah','mahasiswacontroller@tambah');
-Route::post('mahasiwa/{mahasiswa}', 'mahasiswaController@lihat');
 Route::post('mahasiswa/simpan', 'mahasiswaController@simpan');
 Route::get('mahasiswa/edit/{mahasiswa}', 'mahasiswaController@edit');
+Route::get('mahasiwa/{mahasiswa}', 'mahasiswaController@lihat');
 Route::post('mahasiswa/edit/{mahasiswa}', 'mahasiswaController@update');
 Route::get('mahasiswa/hapus/{mahasiswa}', 'mahasiswaController@hapus');
 
@@ -67,8 +67,8 @@ Route::get('mahasiswa/hapus/{mahasiswa}', 'mahasiswaController@hapus');
 Route::get('jadwal_matakuliah','jadwal_matakuliahcontroller@awal');
 Route::get('jadwal_matakuliah/tambah','jadwal_matakuliahcontroller@tambah');
 Route::post('jadwal_matakuliah/simpan', 'jadwal_matakuliahController@simpan');
-Route::get('jadwal_matakuliah/edit/{jadwal_matakuliah}', 'jadwal_matakuliahController@edit');
 Route::get('jadwal_matakuliah/{jadwal_matakuliah}', 'jadwal_matakuliahController@lihat');
+Route::get('jadwal_matakuliah/edit/{jadwal_matakuliah}', 'jadwal_matakuliahController@edit');
 Route::post('jadwal_matakuliah/edit/{jadwal_matakuliah}', 'jadwal_matakuliahController@update');
 Route::get('jadwal_matakuliah/hapus/{jadwal_matakuliah}', 'jadwal_matakuliahController@hapus');
 
@@ -80,7 +80,26 @@ Route::get('dosen_matakuliah/{dosen_matakuliah}', 'dosen_matakuliahController@li
 Route::post('dosen_matakuliah/edit/{dosen_matakuliah}', 'dosen_matakuliahController@update');
 Route::get('dosen_matakuliah/hapus/{dosen_matakuliah}', 'dosen_matakuliahController@hapus');
 
+Route::get('ujiHas','RelationshipRebornController@ujiHas');
 
 
 
+Route::get('/', function(Illuminate\Http\Request $request)
+{
+	echo " Ini adalah request dari method get ". $request->nama;
+});
 
+
+use Illuminate\Http\Request;
+Route::get('/',function()
+{
+	echo Form::open(['url'=>'/']).
+	Form::label('nama').
+	Form::text('nama',null).
+	Form::submit('kirim').
+	Form::close();
+});
+Route::post('/',function(Request $request)
+{
+	echo "Hasil dari input tadi nama : ".$request->nama;
+});
