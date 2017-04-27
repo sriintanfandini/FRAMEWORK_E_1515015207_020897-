@@ -13,7 +13,7 @@ class DosenMatakuliahRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,8 +25,11 @@ class DosenMatakuliahRequest extends Request
     {
         $validasi = [
         'dosen_id'=>'required',
-        'matakuliah_id'=>'required'];
-        if ($this->is('dosen_matakuliah/tambah')){}
+        'matakuliah_id'=>'required'
+        ];
+
+        if ($this->is('dosen_matakuliah/tambah')) {
+        }
         return $validasi;
     }
 }

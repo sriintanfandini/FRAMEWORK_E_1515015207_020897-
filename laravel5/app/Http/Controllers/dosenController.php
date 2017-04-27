@@ -5,52 +5,70 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-
-use App\dosen;
-use App\pengguna;
-use App\Http\Request\DosenRequest;
+use App\Dosenn;
+use App\Pengguna;
+use App\Http\Requests\DosenRequest;
 
 class dosenController extends Controller
 {
-    public function awal(){
-        return view('dosen.awal', ['data'=>dosen::all()]);
-    }
-public function tambah(){
-    return view('dosen.tambah');
-    }
-public function simpan(DosenRequest $input){
-    if ($pengguna->save())
+  protected $informasi = 'Gagal Melakukan Aksi';
+  public function awal()
+  {
+    $semuaDosen = Dosenn::all();
+    return view('dosenn.awal', compact('semuaDosen'));
+  }
+    public function tambah()
     {
-    $dosen = new dosen;
-    $dosen->nama = $input->nama;
-    $dosen->nip = $input->nip;
-    $dosen->alamat = $input->alamat;
-    $dosen->pengguna_id = $input->pengguna_id;
-        if ($pengguna->dosen()->save($dosen)) $this->informasi = 'Berhasil Simpan Data';
+        return view('dosenn.tambah');
+         }
+  public function simpan(DosenRequest $input)
+  {
+    $pengguna = new Pengguna($input->only('username','password'));
+      if ($pengguna->save())
+      {
+        $dosenn = new dosenn;
+        $dosenn->Nama = $input->Nama;
+        $dosenn->NIP = $input->NIP;
+        $dosenn->Alamat = $input->Alamat;
+          if ($pengguna->dosenn()->save($dosenn)) $this->informasi = 'Berhasil simpan data';
     }
-    return redirect('dosen')->with(['informasi'=>$informasi]);
+      return redirect('dosenn')->with(['informasi' => $this->informasi]);
     }
-public function edit($id){
-    $dosen = dosen::find($id);
-    return view('dosen.edit')->with(array('dosen'=>$dosen));
+    public function edit($id){
+      $dosenn = dosenn::find($id);
+      return view('dosenn.edit')->with(array('dosenn' => $dosenn));
     }
-public function lihat($id){
-    $dosen = dosen::find($id);
-    return view('dosen.lihat')->with(array('dosen'=>$dosen));
-}
-public function update($id, DosenRequest $input){
-    $dosen = dosen::find($id);
-    $dosen->nama = $input->nama;
-    $dosen->nip = $input->nip;
-    $dosen->alamat = $input->alamat;
-    $dosen->pengguna_id = $input->pengguna_id;
-    $informasi = $dosen->save() ? 'Berhasil update data' : 'Gagal update data';
-    return redirect('dosen')->with(['informasi'=>$informasi]);
-}
-public function hapus($id){
-    $dosen = dosen::find($id);
-    $informasi = $dosen->delete() ? 'Berhasil hapus data' : 'Gagal hapus data';
-    return redirect('dosen')->with(['informasi'=>$informasi]);
-}
-
+    public function lihat($id){
+      $dosenn = dosenn::find($id);
+      return view('dosenn.lihat')->with(array('dosenn' => $dosenn));
+    }
+    public function update($id, DosenRequest $input){
+      $dosenn = dosenn::find($id);
+      $dosenn->Nama = $input->Nama;
+      $dosenn->NIP = $input->NIP;
+      $dosenn->Alamat = $input->Alamat;
+      $dosenn->save();
+      
+        if (!is_null($input->username))
+        {
+          $pengguna = $dosenn->pengguna->fill($input->only('username'));
+          if (!empty($input->password)) $pengguna->password = $input->password;
+          if ($pengguna->save()) $this->informasi = 'Berhasil simpan data';
+        }
+        else
+        {
+          $this->informasi = 'Berhasil simpan data';
+        }
+        
+        return redirect('dosenn')->with(['informasi' => $this->informasi]);
+      }
+      public function hapus($id) {
+        $dosenn = dosenn::find($id);
+        if ($dosenn->pengguna()->delete())
+        {
+          if ($dosenn->delete()) $this->informasi = 'Berhasil hapus data';
+        }
+        return redirect('dosenn')->with(['informasi' => $this->informasi]);
+        }
+  
 }

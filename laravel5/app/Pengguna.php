@@ -3,26 +3,27 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 
-class Pengguna extends Model
+class Pengguna extends Model implements AuthenticatableContract
 {
-    Protected $table = 'Pengguna';
-    Protected $fillable = ['username','password'];
+    use Authenticatable;
+    protected $table ='pengguna'; //menghubungkan table pengguna didatabase
+    protected $fillable =['username', 'password']; //fillable yang boleh diisi
 
-    public function mahasiswa()
+    public function mahasiswa(){
+    	return $this->hasOne(mahasiswa::class); //memanggil kelas mahasiswa didalam tabel pengguna
+    }
+   
+    public function dosenn()
     {
-    	return $this->hasOne(mahasiswa::class);
+    	return $this->hasOne(dosenn::class);
     }
 
-    public function dosen()
+     public function peran()
     {
-    	return $this->hasOne(dosen::class);
-    } 
-
-        public function peran()
-    {
-    	return $this->belongsToMany(peran::class);
-    } 
+    	return $this->belongsToMany(Peran::class);
+    }
 }
-
 

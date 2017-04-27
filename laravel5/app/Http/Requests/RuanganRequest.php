@@ -13,7 +13,7 @@ class RuanganRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,12 +23,11 @@ class RuanganRequest extends Request
      */
     public function rules()
     {
-         $validasi = [
-        'title'=> 'required'
+        $validasi = [
+        'title'=>'required'
         ];
-        if ($this->is('ruangan/tambah'))
-        {
 
+        if ($this->is('ruangan/tambah')) {
         }
         return $validasi;
     }

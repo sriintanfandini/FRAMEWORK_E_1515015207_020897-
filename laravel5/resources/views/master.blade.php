@@ -2,15 +2,6 @@
 <html lang="en">
     <head>
     <meta charset="utf-8">
-    @if (count($errors) > 0)
-    <div class="alert alert-danger">
-      <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error}}</li>
-        @endforeach
-      </ul>
-    </div>
-    @endif
         <title>@yield('page_title','Halaman awal') | Laboratorium Pemrograman FW</title>
 
         <link rel="stylesheet" type="text/css"
@@ -23,13 +14,12 @@
             body {
                 padding-top: 70px;
                 padding-bottom: 70px;
-                background: pink;
+                background-color: lightgreen;*/
            }
 
            .starter-template{
             padding: 40px 15px;
             text-align: center;
-
            }
 
            .form-horizontal{
@@ -39,7 +29,6 @@
            footer{
             padding-top: 15px;
             text-align: right;
-            background: black;
            }
 
 
@@ -60,23 +49,23 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    
 
                     <li class="dropdown active">
                         <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Mahasiswa <span class="caret"></span>
                         </a>
                          <ul class="dropdown-menu" aria-labelledby="dLabel">
-                                <li><a href="{{url('mahasiswa')}}">Data Mahasiswa</a></li>
+                                <li><a href="{{url('mahasiswa')}}">Data mahasiswa</a></li>
                                 <li class="divider"></li>
                                 <li><a href="{{url('jadwal_matakuliah')}}">Jadwal Mahasiswa</a></li>
+
                             </ul>
                     </li>
-
+                    
                     <li class="dropdown active">
                         <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Dosen <span class="caret"></span>
                         </a>
                          <ul class="dropdown-menu" aria-labelledby="dLabel">
-                                <li><a href="{{url('Dosen')}}">Data Dosen</a></li>
+                                <li><a href="{{url('dosenn')}}">Data Dosen</a></li>
                                 <li class="divider"></li>
                                 <li><a href="{{url('dosen_matakuliah')}}">Jadwal Dosen Mengajar</a></li>
                             </ul>
@@ -86,17 +75,25 @@
                         <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Pengaturan <span class="caret"></span>
                         </a>
                          <ul class="dropdown-menu" aria-labelledby="dLabel">
-                                <li><a href="{{url('pengguna')}}">Pengguna</a></li>
+                                <li><i class="fa fa-users"><a href="{{url('pengguna')}}">Pengguna</i></a></li>
                                 <li class="divider"></li>
-                                <li><a href="{{url('ruangan')}}">ruangan</a></li>
-                                <li><a href="{{url('matakuliah')}}">matakuliah</a></li>
+                                <li><i class="fa fa-map"><a href="{{url('ruangan')}}">ruangan</i></a></li>
+                                <li><i class="fa fa-cogs"><a href="{{url('matakuliah')}}">matakuliah</i></a></li>
                             </ul>
                     </li>
+                    <li class="dropdown active">
+                                <a href="{{ url('logout')}}">Logout</a>
                 </ul>
+
             </div><!--/.nav-collapse -->
         </div>
        </nav>
+
+
+         
+
        <div class="clearfix"></div>
+
        <div class="container">
            @if(Session::has('informasi'))
                 <div class="alert alert-info">
@@ -104,15 +101,26 @@
                     {{Session::get('informasi')}}
                 </div>
             @endif
+
+            @if (count($errors) > 0)
+            <div class="alert alert-danger">
+              <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+              </ul>
+            </div>
+            @endif
+
             @yield('container')
        </div>
        <nav class="navbar navbar-default navbar-fixed-bottom">
            <footer class="container">
-               <!   please dont delete this >
-               <marquee>
-
-               <font face="arial black" size="5" color="gold">created by</font> <a href="http://google.com/kara">
-               <span><i class="fa fa-google" style="color: #1da1f2"></i><font face="arial black" size="5" color="gold"><b>@Sri Intan Fandini</b></font></span></a> <!--/   please dont delete this    -->
+               <!   please dont delete this ><marquee>
+               created by <a href="http://facebook.com/Sri Intan Fandini.14?fref=ts">
+               <span><i class="fa fa-facebook-square" style="color: #1da1f2"></i>Sri Intan Fandini</span></a>
+               gitHub by <a href="https://github.com/SriIntanFandini/Framework_E_1515015207_020897">
+              <span><i class="fa fa-github" style="color: #1da1f2"></i>SriIntanFandini</span></a> <!--/   please dont delete this    -->
            </marquee></footer>
        </nav>
 

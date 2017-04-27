@@ -13,7 +13,7 @@ class MahasiswaRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -29,12 +29,10 @@ class MahasiswaRequest extends Request
         'alamat'=>'required',
         'username'=>'required'
         ];
-        if ($this->is('mahasiswa/tambah'))
-        {
+
+        if ($this->is('mahasiswa/tambah')) {
             $validasi['password'] = 'required';
         }
         return $validasi;
-            //
-    
     }
 }

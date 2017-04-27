@@ -13,7 +13,7 @@ class DosenRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,21 +21,18 @@ class DosenRequest extends Request
      *
      * @return array
      */
-    public function rules()
+   public function rules()
     {
-
         $validasi = [
         'nama'=>'required',
         'nip'=>'required|integer',
         'alamat'=>'required',
         'username'=>'required'
         ];
-        if ($this->is('dosen/tambah'))
-        {
+
+        if ($this->is('dosenn/tambah')) {
             $validasi['password'] = 'required';
         }
         return $validasi;
-       
-    
     }
 }

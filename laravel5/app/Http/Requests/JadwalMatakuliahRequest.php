@@ -13,7 +13,7 @@ class JadwalMatakuliahRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,15 +23,13 @@ class JadwalMatakuliahRequest extends Request
      */
     public function rules()
     {
-
         $validasi = [
-        'nama'=>'required',
-        'ruang_id'=>'required',
+        'mahasiswa_id'=>'required',
+        'ruangan_id'=>'required',
         'dosen_matakuliah_id'=>'required'
         ];
-        if ($this->is('jadwal_matakuliah/tambah'))
-        {
-           
+
+        if ($this->is('jadwal_matakuliah/tambah')) {
         }
         return $validasi;
     }

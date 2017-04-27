@@ -12,6 +12,10 @@ return [
     | as required, but they're a perfect start for most applications.
     |
     */
+    // 'provider' => [
+    //     'user'=>[
+    //         'driver' => 'eloquent',
+    //         'model' => App\pengguna::class,
 
     'defaults' => [
         'guard' => 'web',
@@ -67,7 +71,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Pengguna::class,
         ],
 
         // 'users' => [

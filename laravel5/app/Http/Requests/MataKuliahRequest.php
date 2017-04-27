@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class MataKuliahRequest extends Request
+class MatakuliahRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class MataKuliahRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,19 +23,13 @@ class MataKuliahRequest extends Request
      */
     public function rules()
     {
-
         $validasi = [
         'title'=>'required',
         'keterangan'=>'required'
-        'alamat'=>'required',
-        'username'=>'required'
         ];
-        if ($this->is('maatakuliah/tambah'))
-        {
 
+        if ($this->is('matakuliah/tambah')) {
         }
         return $validasi;
-        
-        
     }
 }
